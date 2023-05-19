@@ -6,7 +6,7 @@ This repository provides different examples/reference code on how to interface w
 
 Some of the example code may reference app notes that TouchNetix has written. Some of these app notes are subject to NDAs. To obtain access to the app notes, please contact [support@touchnetix.com](mailto:support@touchnetix.com).
 
-## Prerequisites 
+## Prerequisites
 
 The code supplied in this repository requires the `axiom_tc` package to be available to the python interpreter. The `axiom_tc` package is available on PyPI: [axiom_tc](https://pypi.org/project/axiom-tc/)
 
