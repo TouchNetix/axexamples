@@ -20,7 +20,7 @@ App Note: TNxAN00056 aXiom Self Test
 
 The `axiom_tc` python package is required to run these examples. Use the `requirements.txt` to install this package.
 
-```bash
+```console
 pip install -r requirements.txt
 ```
 

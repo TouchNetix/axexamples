@@ -10,7 +10,7 @@ Some of the example code may reference app notes that TouchNetix has written. So
 
 The code supplied in this repository requires the `axiom_tc` package to be available to the python interpreter. The `axiom_tc` package is available on PyPI: [axiom_tc](https://pypi.org/project/axiom-tc/)
 
-```bash
+```console
 pip install axiom_tc
 ```
 
