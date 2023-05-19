@@ -14,7 +14,7 @@ The code supplied in this repository requires the `axiom_tc` package to be avail
 pip install axiom_tc
 ```
 
-Some of the examples may require a specific (or newer) version of the `axiom_tc` package. See the example's README.md file for more information.
+Some of the examples may require a specific (or newer) version of the `axiom_tc` package. See the example's README.md file or `requirements.txt` for more information.
 
 ## Licence
 
