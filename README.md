@@ -1,6 +1,6 @@
 # aXiom Examples
 
-This repository provides different examples/reference code on how to interface with TouchNetix's aXiom touch controllers.
+This repository provides additional examples and reference code on how to interface with TouchNetix's aXiom touch controllers.
 
 ## Documentation
 
@@ -8,13 +8,13 @@ Some of the example code may reference app notes that TouchNetix has written. So
 
 ## Prerequisites
 
-The code supplied in this repository requires the `axiom_tc` package to be available to the python interpreter. The `axiom_tc` package is available on PyPI: [axiom_tc](https://pypi.org/project/axiom-tc/)
+Requires Python 3.8 to be installed and accessible on the Path variable.
+
+Prerequisites can be installed via the `requirements.txt`:
 
 ```console
-pip install axiom_tc
+pip install -r requirements.txt
 ```
-
-Some of the examples may require a specific (or newer) version of the `axiom_tc` package. See the example's README.md file or `requirements.txt` for more information.
 
 ## Licence
 

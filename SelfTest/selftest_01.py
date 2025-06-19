@@ -80,12 +80,12 @@ if __name__ == '__main__':
     u06 = u06_SelfTest(axiom)
     u07 = u07_LiveView(axiom)
 
-    # Set the host trigger bitmask for the CRC generate and check self test.
-    # This self test will validate the CRCs on the aXIom device. Store the value
-    # into flash. Otherwise the RAM and flash configs will mismatch which will
-    # cause this test to fail.
-    u06.reg_run_test_n_on_host_trigger = 0x200
-    u06.write(True)
+    # Enable the self test to validate CRCs if it is not already enabled.
+    if u06.reg_run_test_on_host_trigger_9_crc_check_test == 0:
+        u06.reg_run_test_on_host_trigger_9_crc_check_test = 1
+        # The change will need to be written to NVM, otherwise this test will
+        # fail as we have just changed the RAM configuration but not the NVM.
+        u06.write(True)
 
     # Send a system manager command to invoke the self tests to run.
     axiom.u02.send_command(axiom.u02.CMD_RUN_SELF_TESTS)

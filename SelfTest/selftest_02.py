@@ -31,6 +31,7 @@ from time import sleep
 from axiom_tc import axiom
 from axiom_tc import u06_SelfTest
 from axiom_tc import u07_LiveView
+from axiom_tc import u07_LiveView_Utils as u07_Utils
 
 def init_axiom_comms(args):
     # Import the requested comms layer
@@ -79,11 +80,16 @@ if __name__ == '__main__':
     u06 = u06_SelfTest(axiom)
     u07 = u07_LiveView(axiom)
 
-    # Enable self tests 1, 2, 3, 4, 5, 9, 10, 11 and 13. There is a bit per
-    # test. Write the setting to axiom. 
-    u06.reg_run_test_n_on_host_trigger = 0x2E3E
-    u06.write()
-
+    u06.reg_run_test_on_host_trigger_1_ae_baseline_ram_test = 1
+    u06.reg_run_test_on_host_trigger_2_ae_internal_ram_test = 1
+    u06.reg_run_test_on_host_trigger_3_vdda_test = 1
+    u06.reg_run_test_on_host_trigger_4_ae_test = 1
+    u06.reg_run_test_on_host_trigger_5_sense_and_shield_pin_leakage_test = 1
+    u06.reg_run_test_on_host_trigger_9_crc_check_test = 1
+    u06.reg_run_test_on_host_trigger_10_nirq_pin_test = 1
+    u06.reg_run_test_on_host_trigger_11_nvm_test = 1
+    u06.reg_run_test_on_host_trigger_13_vddc_test = 1
+    
     # These self tests require the acquisition engine to be stopped
     axiom.u02.send_command(axiom.u02.CMD_STOP)
     
@@ -115,9 +121,20 @@ if __name__ == '__main__':
 
     # Show the results
     u07.read()
-    u07.print()
+    
+    print("Test Results:")
+    print("  Overall Result : %s" % u07_Utils.convert_self_test_overall_result_to_string(u07.reg_u06_self_test_overall_result))
+    print("  Individual Test Results:")
+    print("    Test  1 : AE Baseline RAM Test              : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[1]))
+    print("    Test  2 : AE Internal RAM Test              : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[2]))
+    print("    Test  3 : VDDA Test                         : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[3]))
+    print("    Test  4 : AE Test                           : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[4]))
+    print("    Test  5 : Sense and Shield Pin Leakage Test : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[5]))
+    print("    Test  9 : CRC Check Test                    : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[9]))
+    print("    Test 10 : NIRQ Pin Test                     : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[10]))
+    print("    Test 11 : NVM Test                          : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[11]))
+    print("    Test 13 : VDDA Test                         : %s" % u07_Utils.convert_self_test_result_to_string(u07.reg_u06_self_test_results[13]))
 
     # Close the connection and exit.
     axiom.close()
-    sleep(0.1)
     sys.exit(0)
